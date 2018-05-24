@@ -1,4 +1,4 @@
-# Real GTIN Validator
+# Real GTIN Validator [![Build Status](https://travis-ci.org/hitmeister/gtin-validator.svg?branch=master)](https://travis-ci.org/hitmeister/gtin-validator)
 
 A GTIN is a string of digits that uniquely identifies a trade item (a product that is bought and sold). 
 A GTIN is globally unique, meaning that no two products in the world share the same GTIN.
