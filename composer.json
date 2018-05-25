@@ -15,8 +15,9 @@
         }
     ],
     "support": {
-        "source": "https://github.com/hitmeister/gtin-validator",
-        "issues": "https://github.com/hitmeister/gtin-validator/issues"
+        "email": "opensource@real-digital.de",
+        "issues": "https://github.com/hitmeister/gtin-validator/issues",
+        "source": "https://github.com/hitmeister/gtin-validator"
     },
     "license": "Apache-2.0",
     "type": "library",
