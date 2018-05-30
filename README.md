@@ -40,6 +40,10 @@ $value = 'any invalid value';
 try {
     $gtin = Gtin\Factory::create($value);
 } catch (Gtin\NonNormalizable $e) {
+    // $translatedMessage = $someExternalComponent->translate(
+    //     $e->messageKey(), 
+    //     $e->messageData()
+    // );
     // ...
 }
 
