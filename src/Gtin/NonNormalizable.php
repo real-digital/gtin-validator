@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace Real\Validator\Gtin;
 
-class NonNormalizable extends \InvalidArgumentException
+use Real\Validator\UserError;
+
+class NonNormalizable extends \InvalidArgumentException implements UserError
 {
     # @formatter:off
     public const CODE_LENGTH_14         = 1000;
@@ -17,11 +19,15 @@ class NonNormalizable extends \InvalidArgumentException
     /** @var string */
     private $value;
 
+    /** @var int */
+    private $reasonCode;
+
     public function __construct(string $value, Specification $specification, \Throwable $previous = null)
     {
         $this->value = $value;
+        $this->reasonCode = $specification->reasonCode();
 
-        parent::__construct($this->reasonMessage($specification), $specification->reasonCode(), $previous);
+        parent::__construct($this->reasonMessage($this->reasonCode), $this->reasonCode, $previous);
     }
 
     public function value(): string
@@ -29,9 +35,9 @@ class NonNormalizable extends \InvalidArgumentException
         return $this->value;
     }
 
-    private function reasonMessage(Specification $specification): string
+    private function reasonMessage(int $reasonCode): string
     {
-        switch ($specification->reasonCode()) {
+        switch ($reasonCode) {
             case self::CODE_LENGTH_14:
                 $message = 'Length is greater than 14 characters';
                 break;
@@ -53,5 +59,21 @@ class NonNormalizable extends \InvalidArgumentException
         }
 
         return $message;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function messageKey(): string
+    {
+        return sprintf('GTIN %%gtin%% is not valid. %s', $this->getMessage());
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function messageData(): array
+    {
+        return ['%gtin%' => $this->value];
     }
 }
