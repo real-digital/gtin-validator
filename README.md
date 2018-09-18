@@ -20,7 +20,7 @@ $ composer require real-digital/gtin-validator
 via GitHub
 
 ``` bash
-$ git clone https://github.com/hitmeister/gtin-validator.git
+$ git clone https://github.com/real-digital/gtin-validator.git
 ```
 
 ### Usage
