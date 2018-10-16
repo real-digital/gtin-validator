@@ -15,6 +15,7 @@
         }
     ],
     "support": {
+        "email": "opensource@real-digital.de",
         "issues": "https://github.com/real-digital/gtin-validator/issues",
         "source": "https://github.com/real-digital/gtin-validator"
     },
