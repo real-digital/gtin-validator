@@ -2,9 +2,10 @@
 
 <!-- https://phpunit.readthedocs.io/en/latest/ -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/7.1/phpunit.xsd"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/7.3/phpunit.xsd"
          bootstrap="vendor/autoload.php"
          colors="true"
+         executionOrder="random"
 >
     <php>
         <ini name="date.timezone" value="UTC"/>
