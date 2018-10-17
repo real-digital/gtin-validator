@@ -9,7 +9,8 @@ All notable changes to this project will be listed in this file.
 ## [1.0.2] - 2018-10-16
 
 - Update brand links
-- Use git tags as a source for package versions 
+- Use git tags as a source for package versions
+- Improve tests
 
 ## [1.0.1] - 2018-05-24
 
