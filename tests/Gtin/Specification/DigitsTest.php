@@ -26,18 +26,13 @@ class DigitsTest extends TestCase
     {
         return [
             ['1', true],
-            [123, true],
-            [42, true],
-            [012, true],
+            ['123', true],
+            ['42', true],
             ['012', true],
             ['0', true],
-            [0, true],
-            [00000000000000000000000, true],
             ['0000000000000000000000', true],
-            [0xff, true],
-            [0b11, true],
             ['-1', false],
-            [-100, false],
+            ['-100', false],
             ['25-4', false],
             ['', false],
             [' ', false],
@@ -53,9 +48,6 @@ class DigitsTest extends TestCase
 
     /**
      * @dataProvider digitsProvider
-     *
-     * FYI: Strict type declarations not enforced for Reflection API invocation
-     * @link https://externals.io/message/100851
      */
     public function testIsSatisfied(string $value, bool $isSatisfied)
     {
