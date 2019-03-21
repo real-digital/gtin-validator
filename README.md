@@ -44,6 +44,8 @@ try {
     // ...
 }
 
+// validate GTIN value
+$isValid = Gtin\Validator::isValid($value);
 ```
 
 ### GTIN interface overview
