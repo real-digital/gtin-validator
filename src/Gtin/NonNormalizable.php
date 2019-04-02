@@ -47,6 +47,9 @@ class NonNormalizable extends \InvalidArgumentException
             case self::CODE_PREFIX:
                 $message = 'Prefix is invalid';
                 break;
+            case self::CODE_CHECKSUM:
+                $message = 'Checksum is invalid';
+                break;
             default:
                 $message = 'Invalid argument has been passed';
                 break;
