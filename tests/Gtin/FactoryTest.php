@@ -68,4 +68,43 @@ class FactoryTest extends TestCase
 
         Gtin\Factory::create($value);
     }
+
+    /**
+     * @return array
+     */
+    public function customPrefixProvider(): array
+    {
+        return [
+            ['000073127727', [], true],
+            ['0000073127727', [], true],
+            ['614141991', [], true],
+            ['2388060103489', ['238'], true],
+            ['02388060103489', ['238'], true],
+            ['2388060103489', ['237'], false],
+            ['02500623901039', ['250', '250'], true],
+            ['2500623901039', ['250', '270'], true],
+            ['2500623901039', ['250'], true],
+            ['02500623901039', [], false],
+            ['2500623901039', [], false],
+            ['2500623901039', ['555'], false],
+        ];
+    }
+
+    /**
+     * @dataProvider customPrefixProvider
+     *
+     * @param string $value
+     * @param array $customPrefix
+     * @param bool $success
+     */
+    public function testCustomPrefix(string $value, array $customPrefix, bool $success): void
+    {
+        try {
+            Gtin\Factory::create($value, $customPrefix);
+
+            $this->assertTrue($success);
+        } catch (Gtin\NonNormalizable $e) {
+            $this->assertFalse($success);
+        }
+    }
 }

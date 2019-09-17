@@ -11,16 +11,17 @@ abstract class General implements Validator\Gtin
     private $origin;
 
     /**
-     * @throws NonNormalizable
+     * @param string $value
+     * @param array $customPrefixes
      */
-    final public function __construct(string $value)
+    final public function __construct(string $value, array $customPrefixes = [])
     {
         $this->origin = $value;
 
         $this->satisfyBy(new Specification\Digits);
         $this->satisfyBy(new Specification\Length);
         $this->satisfyBy(new Specification\CheckSum);
-        $this->satisfyBy(new Specification\Prefix);
+        $this->satisfyBy(new Specification\Prefix($customPrefixes));
     }
 
     /**

@@ -163,6 +163,16 @@ final class Prefix implements Gtin\Specification
         # @formatter:on
     ];
 
+    private $customPrefixes = [];
+
+    /**
+     * @param array $customPrefixes
+     */
+    public function __construct(array $customPrefixes = [])
+    {
+        $this->customPrefixes = $this->normalizePrefixes($customPrefixes);
+    }
+
     /**
      * @inheritdoc
      */
@@ -195,6 +205,26 @@ final class Prefix implements Gtin\Specification
             $list = self::GS1_PREFIXES;
         }
 
-        return array_merge($list, self::GS1_MEMBER_ORGANIZATION_PREFIXES);
+        return array_merge($list, self::GS1_MEMBER_ORGANIZATION_PREFIXES, $this->customPrefixes);
+    }
+
+    /**
+     * @param array $prefixes
+     *
+     * @return array
+     */
+    private function normalizePrefixes(array $prefixes): array
+    {
+        $prefixRanges = [];
+
+        foreach ($prefixes as $prefix) {
+            if (is_array($prefix)) {
+                $prefixRanges[] = $prefix;
+            } else {
+                $prefixRanges[] = [$prefix, $prefix];
+            }
+        }
+
+        return $prefixRanges;
     }
 }
