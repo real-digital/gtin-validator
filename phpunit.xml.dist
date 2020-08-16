@@ -7,9 +7,11 @@
          cacheResultFile="build/phpunit.cache"
          colors="true"
          executionOrder="random"
+         verbose="true"
 >
     <php>
         <ini name="date.timezone" value="UTC"/>
+        <ini name="error_reporting" value="-1"/>
     </php>
 
     <testsuites>
