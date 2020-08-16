@@ -69,7 +69,7 @@ Each created GTIN implements a common interface. This is a complete list of its 
 ## Testing
 
 ``` bash
-$ composer test
+$ composer tests
 ```
 
 ## License
