@@ -17,6 +17,7 @@ install:
 
 before_script:
     - vendor/bin/phpstan analyse --ansi --no-progress
+    - vendor/bin/psalm --no-progress --taint-analysis
 
 script:
     - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
