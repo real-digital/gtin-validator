@@ -13,7 +13,8 @@ before_script:
 
 script:
     - mkdir -p build/logs
-    - vendor/bin/phpunit -c phpunit.xml.dist
+    - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
 after_success:
-    - travis_retry php vendor/bin/php-coveralls
+    - travis_retry wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.2.0/php-coveralls.phar
+    - travis_retry php php-coveralls.phar -e test -x build/logs/clover.xml -o build/logs/coveralls.json
