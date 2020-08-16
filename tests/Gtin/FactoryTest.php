@@ -34,6 +34,8 @@ class FactoryTest extends TestCase
 
     /**
      * @dataProvider validValueProvider
+     *
+     * @param class-string<Gtin> $fqcn
      */
     public function testSuccessfulCreation(string $value, string $fqcn): void
     {

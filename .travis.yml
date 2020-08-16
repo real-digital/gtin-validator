@@ -15,6 +15,9 @@ install:
     - composer self-update --ansi --no-interaction
     - composer install --ansi --no-interaction --no-suggest
 
+before_script:
+    - vendor/bin/phpstan analyse --ansi --no-progress
+
 script:
     - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
