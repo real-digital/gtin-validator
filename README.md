@@ -44,6 +44,10 @@ try {
     // ...
 }
 
+
+// check whether GTIN is valid
+$value = '4006381333931';
+$isValid = Gtin\Factory::isValid($value);
 ```
 
 ### GTIN interface overview

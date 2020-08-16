@@ -42,6 +42,14 @@ class FactoryTest extends TestCase
         self::assertInstanceOf($fqcn, $gtin);
     }
 
+    /**
+     * @dataProvider validValueProvider
+     */
+    public function testIsValid(string $value)
+    {
+        self::assertTrue(Gtin\Factory::isValid($value));
+    }
+
     public function invalidValueProvider(): array
     {
         return [
@@ -67,5 +75,13 @@ class FactoryTest extends TestCase
         $this->expectExceptionCode($reasonCode);
 
         Gtin\Factory::create($value);
+    }
+
+    /**
+     * @dataProvider invalidValueProvider
+     */
+    public function testIsNotValid(string $value)
+    {
+        self::assertFalse(Gtin\Factory::isValid($value));
     }
 }
