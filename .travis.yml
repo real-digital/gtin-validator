@@ -1,4 +1,6 @@
+dist: bionic
 language: php
+sudo: false
 
 php:
     - '7.1'
@@ -6,13 +8,14 @@ php:
     - '7.3'
     - '7.4'
 
-sudo: false
+before_install:
+    - mkdir -p build/logs
 
-before_script:
-    - composer self-update && composer install
+install:
+    - composer self-update --ansi --no-interaction
+    - composer install --ansi --no-interaction --no-suggest
 
 script:
-    - mkdir -p build/logs
     - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
 after_success:
