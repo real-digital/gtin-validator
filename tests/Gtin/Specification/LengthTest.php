@@ -8,7 +8,7 @@ use Real\Validator\Gtin;
 
 class LengthTest extends TestCase
 {
-    public function testSpecificationInterfaceIsInherited()
+    public function testSpecificationInterfaceIsInherited(): void
     {
         $specification = new Gtin\Specification\Length();
 
@@ -45,7 +45,7 @@ class LengthTest extends TestCase
     /**
      * @dataProvider lengthProvider
      */
-    public function testCalculate(string $value, int $length)
+    public function testCalculate(string $value, int $length): void
     {
         $specification = new Gtin\Specification\Length();
 
@@ -82,7 +82,7 @@ class LengthTest extends TestCase
     /**
      * @dataProvider satisfactionProvider
      */
-    public function testIsSatisfied(string $value, int $length, bool $isSatisfied)
+    public function testIsSatisfied(string $value, int $length, bool $isSatisfied): void
     {
         $specification = new Gtin\Specification\Length();
 
@@ -123,7 +123,7 @@ class LengthTest extends TestCase
     /**
      * @dataProvider invalidValueWithCodeProvider
      */
-    public function testCalculateChangesReasonCode(string $value, int $reasonCode)
+    public function testCalculateChangesReasonCode(string $value, int $reasonCode): void
     {
         $specification = new Gtin\Specification\Length();
 
@@ -137,7 +137,7 @@ class LengthTest extends TestCase
     /**
      * @dataProvider invalidValueWithCodeProvider
      */
-    public function testIsSatisfiedChangesReasonCode(string $value, int $reasonCode)
+    public function testIsSatisfiedChangesReasonCode(string $value, int $reasonCode): void
     {
         $specification = new Gtin\Specification\Length();
 

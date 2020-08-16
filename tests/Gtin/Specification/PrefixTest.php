@@ -8,14 +8,14 @@ use Real\Validator\Gtin;
 
 class PrefixTest extends TestCase
 {
-    public function testSpecificationInterfaceIsInherited()
+    public function testSpecificationInterfaceIsInherited(): void
     {
         $specification = new Gtin\Specification\Prefix();
 
         self::assertInstanceOf(Gtin\Specification::class, $specification);
     }
 
-    public function testReasonCode()
+    public function testReasonCode(): void
     {
         $specification = new Gtin\Specification\Prefix();
 
@@ -35,7 +35,7 @@ class PrefixTest extends TestCase
     /**
      * @dataProvider prefixCounterProvider
      */
-    public function testListRanges(int $length, int $count)
+    public function testListRanges(int $length, int $count): void
     {
         $specification = new Gtin\Specification\Prefix();
 
@@ -64,7 +64,7 @@ class PrefixTest extends TestCase
     /**
      * @dataProvider prefixProvider
      */
-    public function testIsSatisfied(int $length, string $prefix, bool $isSatisfied)
+    public function testIsSatisfied(int $length, string $prefix, bool $isSatisfied): void
     {
         $specification = new Gtin\Specification\Prefix();
 

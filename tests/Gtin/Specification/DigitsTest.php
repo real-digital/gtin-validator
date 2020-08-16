@@ -8,14 +8,14 @@ use Real\Validator\Gtin;
 
 class DigitsTest extends TestCase
 {
-    public function testSpecificationInterfaceIsInherited()
+    public function testSpecificationInterfaceIsInherited(): void
     {
         $specification = new Gtin\Specification\Digits();
 
         self::assertInstanceOf(Gtin\Specification::class, $specification);
     }
 
-    public function testReasonCode()
+    public function testReasonCode(): void
     {
         $specification = new Gtin\Specification\Digits();
 
@@ -49,7 +49,7 @@ class DigitsTest extends TestCase
     /**
      * @dataProvider digitsProvider
      */
-    public function testIsSatisfied(string $value, bool $isSatisfied)
+    public function testIsSatisfied(string $value, bool $isSatisfied): void
     {
         $specification = new Gtin\Specification\Digits();
 
