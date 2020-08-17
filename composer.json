@@ -44,11 +44,10 @@
         }
     },
     "scripts": {
-        "test": [
+        "tests": [
             "vendor/bin/phpstan analyse --ansi",
             "vendor/bin/psalm --taint-analysis",
             "vendor/bin/phpunit"
-        ],
-        "tests": "@test"
+        ]
     }
 }
