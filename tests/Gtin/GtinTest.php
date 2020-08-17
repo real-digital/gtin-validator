@@ -5,23 +5,23 @@ namespace Real\Validator\Tests\Gtin;
 
 interface GtinTest
 {
-    public function testValueIsNonNormalizable(string $value, int $reasonCode);
+    public function testValueIsNonNormalizable(string $value, int $reasonCode): void;
 
-    public function testGtinInterfaceIsInherited(string $value);
+    public function testGtinInterfaceIsInherited(string $value): void;
 
-    public function testLength(string $value);
+    public function testLength(string $value): void;
 
-    public function testVariation(string $value);
+    public function testVariation(string $value): void;
 
-    public function testIndicator(string $value, int $indicator);
+    public function testIndicator(string $value, int $indicator): void;
 
-    public function testOrigin(string $value);
+    public function testOrigin(string $value): void;
 
-    public function testKey(string $value, string $key);
+    public function testKey(string $value, string $key): void;
 
-    public function testPadded(string $value, string $padded);
+    public function testPadded(string $value, string $padded): void;
 
-    public function testCheckDigit(string $value, int $checkDigit);
+    public function testCheckDigit(string $value, int $checkDigit): void;
 
-    public function testPrefix(string $value, string $prefix);
+    public function testPrefix(string $value, string $prefix): void;
 }

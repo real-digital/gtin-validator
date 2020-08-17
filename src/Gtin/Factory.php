@@ -27,4 +27,15 @@ final class Factory
                 throw new NonNormalizable($value, $length);
         }
     }
+
+    public static function isValid(string $value): bool
+    {
+        try {
+            self::create($value);
+        } catch (NonNormalizable $e) {
+            return false;
+        }
+
+        return true;
+    }
 }

@@ -8,14 +8,14 @@ use Real\Validator\Gtin;
 
 class CheckSumTest extends TestCase
 {
-    public function testSpecificationInterfaceIsInherited()
+    public function testSpecificationInterfaceIsInherited(): void
     {
         $specification = new Gtin\Specification\CheckSum();
 
         self::assertInstanceOf(Gtin\Specification::class, $specification);
     }
 
-    public function testReasonCode()
+    public function testReasonCode(): void
     {
         $specification = new Gtin\Specification\CheckSum();
 
@@ -39,7 +39,7 @@ class CheckSumTest extends TestCase
     /**
      * @dataProvider validChecksumProvider
      */
-    public function testIsSatisfied(string $value, int $checkDigit, bool $isSatisfied)
+    public function testIsSatisfied(string $value, int $checkDigit, bool $isSatisfied): void
     {
         $specification = new Gtin\Specification\CheckSum();
 

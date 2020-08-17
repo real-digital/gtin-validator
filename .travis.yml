@@ -1,18 +1,27 @@
+dist: bionic
 language: php
-
-php:
-  - '7.1'
-  - '7.2'
-  - '7.3'
-
 sudo: false
 
+php:
+    - '7.1'
+    - '7.2'
+    - '7.3'
+    - '7.4'
+
+before_install:
+    - mkdir -p build/logs
+
+install:
+    - composer self-update --ansi --no-interaction
+    - composer install --ansi --no-interaction --no-suggest
+
 before_script:
-  - composer self-update && composer install
+    - vendor/bin/phpstan analyse --ansi --no-progress
+    - vendor/bin/psalm --no-progress --taint-analysis
 
 script:
-  - mkdir -p build/logs
-  - vendor/bin/phpunit -c phpunit.xml.dist
+    - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
 after_success:
-  - travis_retry php vendor/bin/php-coveralls
+    - travis_retry wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.2.0/php-coveralls.phar
+    - travis_retry php php-coveralls.phar -e test -x build/logs/clover.xml -o build/logs/coveralls.json

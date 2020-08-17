@@ -44,6 +44,10 @@ try {
     // ...
 }
 
+
+// check whether GTIN is valid
+$value = '4006381333931';
+$isValid = Gtin\Factory::isValid($value);
 ```
 
 ### GTIN interface overview
@@ -65,7 +69,7 @@ Each created GTIN implements a common interface. This is a complete list of its 
 ## Testing
 
 ``` bash
-$ composer test
+$ composer tests
 ```
 
 ## License

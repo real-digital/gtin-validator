@@ -3,10 +3,18 @@
 [1.0.2]: https://github.com/real-digital/gtin-validator/commits/1.0.2
 [1.1.0]: https://github.com/real-digital/gtin-validator/commits/1.1.0
 [1.1.1]: https://github.com/real-digital/gtin-validator/commits/1.1.1
+[1.2.0]: https://github.com/real-digital/gtin-validator/commits/1.2.0
 
 # Changelog
 
 All notable changes to this project will be listed in this file.
+
+## [1.2.0] - 2020-08-17
+
+- Add `Gtin\Factory::isValid` shortcut
+- Run tests against PHP 7.4
+- Provide compatibility with PHPUnit 9
+- Add static analysers (phpstan & psalm) 
 
 ## [1.1.1] - 2019-04-02
 

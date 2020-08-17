@@ -29,8 +29,9 @@
         "php": "^7.1"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.3 || ^8.0",
-        "php-coveralls/php-coveralls": "^2.1"
+        "phpstan/phpstan": "^0.12.37",
+        "phpunit/phpunit": "^7.3 || ^8.0 || ^9.0",
+        "vimeo/psalm": "^3.13"
     },
     "autoload": {
         "psr-4": {
@@ -43,9 +44,10 @@
         }
     },
     "scripts": {
-        "test": "vendor/bin/phpunit"
+        "tests": [
+            "vendor/bin/phpstan analyse --ansi",
+            "vendor/bin/psalm --taint-analysis",
+            "vendor/bin/phpunit"
+        ]
     }
 }
-
-
-
