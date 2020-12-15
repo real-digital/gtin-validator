@@ -15,7 +15,7 @@ before_install:
 
 install:
     - composer self-update --ansi --no-interaction
-    - composer install --ansi --no-interaction --no-suggest
+    - composer install --ansi --no-interaction
 
 before_script:
     - vendor/bin/phpstan analyse --ansi --no-progress
