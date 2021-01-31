@@ -7,13 +7,14 @@ php:
     - '7.2'
     - '7.3'
     - '7.4'
+    - '8.0'
 
 before_install:
     - mkdir -p build/logs
 
 install:
     - composer self-update --ansi --no-interaction
-    - composer install --ansi --no-interaction --no-suggest
+    - composer install --ansi --no-interaction
 
 before_script:
     - vendor/bin/phpstan analyse --ansi --no-progress
