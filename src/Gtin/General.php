@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Real\Validator\Gtin;
@@ -17,10 +18,10 @@ abstract class General implements Validator\Gtin
     {
         $this->origin = $value;
 
-        $this->satisfyBy(new Specification\Digits);
-        $this->satisfyBy(new Specification\Length);
-        $this->satisfyBy(new Specification\CheckSum);
-        $this->satisfyBy(new Specification\Prefix);
+        $this->satisfyBy(new Specification\Digits());
+        $this->satisfyBy(new Specification\Length());
+        $this->satisfyBy(new Specification\CheckSum());
+        $this->satisfyBy(new Specification\Prefix());
     }
 
     /**
@@ -48,7 +49,7 @@ abstract class General implements Validator\Gtin
     {
         $digit = substr($this->origin, -1);
 
-        return (int)$digit;
+        return (int) $digit;
     }
 
     /**
@@ -76,6 +77,6 @@ abstract class General implements Validator\Gtin
     {
         $indicator = substr($this->padded(), 0, 1);
 
-        return (int)$indicator;
+        return (int) $indicator;
     }
 }

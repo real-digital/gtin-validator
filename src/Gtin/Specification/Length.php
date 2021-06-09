@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Real\Validator\Gtin\Specification;
@@ -69,14 +70,14 @@ final class Length implements Gtin\Specification
             default:
                 $length = 8;
                 break;
-            case 9;
-            case 10;
-            case 11;
-            case 12;
+            case 9:
+            case 10:
+            case 11:
+            case 12:
                 $length = 12;
                 break;
-            case 13;
-            case 14;
+            case 13:
+            case 14:
                 break;
         }
 

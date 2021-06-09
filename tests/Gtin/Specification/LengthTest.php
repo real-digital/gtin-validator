@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
-namespace Real\Validator\Tests\Gtin;
+namespace Real\Validator\Tests\Gtin\Specification;
 
 use PHPUnit\Framework\TestCase;
 use Real\Validator\Gtin;
