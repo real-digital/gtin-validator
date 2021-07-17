@@ -51,7 +51,7 @@ jobs:
                     composer-options: ${{ matrix.composer-options }}
 
             -   name: Setup PCOV
-                if: matrix.php == '7.1'
+                if: matrix.php == 7.1
                 run: |
                     composer require pcov/clobber
                     vendor/bin/pcov clobber
