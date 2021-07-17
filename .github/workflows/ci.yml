@@ -53,7 +53,7 @@ jobs:
             -   name: Setup PCOV
                 if: matrix.php == 7.1
                 run: |
-                    composer require pcov/clobber
+                    composer require pcov/clobber --dev --no-interaction
                     vendor/bin/pcov clobber
 
             -   name: Check Coding standards
