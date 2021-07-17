@@ -37,6 +37,12 @@ jobs:
                     php-version: ${{ matrix.php-versions }}
                     coverage: pcov
 
+            -   name: Setup PCOV
+                if: matrix.php-versions == '7.1'
+                run: |
+                    composer require pcov/clobber
+                    vendor/bin/pcov clobber
+
             -   name: Install composer dependencies
                 uses: ramsey/composer-install@v1
 
