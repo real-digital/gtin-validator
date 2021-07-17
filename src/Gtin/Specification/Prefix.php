@@ -101,9 +101,9 @@ final class Prefix implements Gtin\Specification
         ['780', '780'], // GS1 Chile
         ['784', '784'], // GS1 Paraguay
         ['786', '786'], // GS1 Ecuador
-        ['789', '790'], // GS1 Brasil  
-        ['800', '839'], // GS1 Italy  
-        ['840', '849'], // GS1 Spain  
+        ['789', '790'], // GS1 Brasil
+        ['800', '839'], // GS1 Italy
+        ['840', '849'], // GS1 Spain
         ['850', '850'], // GS1 Cuba
         ['858', '858'], // GS1 Slovakia
         ['859', '859'], // GS1 Czech
