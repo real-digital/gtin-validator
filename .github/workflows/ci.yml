@@ -65,7 +65,7 @@ jobs:
                 run: vendor/bin/phpstan analyse --ansi
 
             -   name: Run Psalm
-                run: vendor/bin/psalm --taint-analysis
+                run: vendor/bin/psalm --taint-analysis --output-format=github
 
             -   name: Run Tests
                 run: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
