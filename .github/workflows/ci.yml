@@ -12,6 +12,7 @@ jobs:
     tests:
         name: PHP ${{ matrix.php }} tests on ${{ matrix.os }}
         runs-on: ${{ matrix.os }}
+        continue-on-error: ${{ matrix.experimental }}
         strategy:
             fail-fast: false
             matrix:
@@ -28,6 +29,11 @@ jobs:
                     - 7.4
                     - 8.0
                     - 8.1
+                experimental: [ false ]
+                include:
+                    -   php: 8.1
+                        experimental: true
+
         steps:
             -   name: Checkout
                 uses: actions/checkout@v2
