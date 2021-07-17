@@ -1,0 +1,79 @@
+name: CI
+
+on:
+    pull_request:
+        paths-ignore:
+            - '**.md'
+    push:
+        paths-ignore:
+            - '**.md'
+
+jobs:
+    tests:
+        name: PHP ${{ matrix.php }} tests on ${{ matrix.os }}
+        runs-on: ${{ matrix.os }}
+        continue-on-error: ${{ matrix.experimental }}
+        strategy:
+            fail-fast: false
+            matrix:
+                os:
+                    - macos-latest
+                    - ubuntu-18.04
+                    - ubuntu-20.04
+                    - ubuntu-latest
+                    - windows-latest
+                php:
+                    - 7.1
+                    - 7.2
+                    - 7.3
+                    - 7.4
+                    - 8.0
+                experimental: [ false ]
+                include:
+                    -   php: 8.1
+                        os: ubuntu-latest
+                        experimental: true
+                        composer-options: '--ignore-platform-reqs'
+
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v2
+
+            -   name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.php }}
+                    coverage: pcov
+
+            -   name: Install composer dependencies
+                uses: ramsey/composer-install@v1
+                with:
+                    composer-options: ${{ matrix.composer-options }}
+
+            -   name: Setup PCOV
+                if: matrix.php == 7.1
+                run: |
+                    composer require pcov/clobber --dev --no-interaction
+                    vendor/bin/pcov clobber
+
+            -   name: Check Coding standards
+                run: |
+                    mkdir build
+                    vendor/bin/phpcs
+
+            -   name: Run PHPStan
+                run: vendor/bin/phpstan analyse --ansi
+
+            -   name: Run Psalm
+                run: vendor/bin/psalm --taint-analysis --output-format=github
+
+            -   name: Run Tests
+                run: vendor/bin/phpunit --coverage-text --coverage-clover build/logs/clover.xml
+
+            -   name: Upload coverage results to Coveralls
+                env:
+                    COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                run: |
+                    composer require php-coveralls/php-coveralls --dev --no-interaction
+                    vendor/bin/php-coveralls --coverage_clover=build/logs/clover.xml --verbose
+
