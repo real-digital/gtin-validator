@@ -10,18 +10,18 @@ on:
 
 jobs:
     tests:
-        name: PHP ${{ matrix.php-versions }} tests on ${{ matrix.operating-system }}
-        runs-on: ${{ matrix.operating-system }}
+        name: PHP ${{ matrix.php }} tests on ${{ matrix.os }}
+        runs-on: ${{ matrix.os }}
         strategy:
             fail-fast: false
             matrix:
-                operating-system:
+                os:
                     - macos-latest
                     - ubuntu-16.04
                     - ubuntu-18.04
                     - ubuntu-20.04
                     - windows-latest
-                php-versions:
+                php:
                     - 7.1
                     - 7.2
                     - 7.3
@@ -35,14 +35,14 @@ jobs:
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
                 with:
-                    php-version: ${{ matrix.php-versions }}
+                    php-version: ${{ matrix.php }}
                     coverage: pcov
 
             -   name: Install composer dependencies
                 uses: ramsey/composer-install@v1
 
             -   name: Setup PCOV
-                if: matrix.php-versions == '7.1'
+                if: matrix.php == '7.1'
                 run: |
                     composer require pcov/clobber
                     vendor/bin/pcov clobber
