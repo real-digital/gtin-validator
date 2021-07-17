@@ -46,7 +46,7 @@ jobs:
                     vendor/bin/phpcs
 
             -   name: Run PHPStan
-                run: vendor/bin/phpstan analyse
+                run: vendor/bin/phpstan analyse --ansi
 
             -   name: Run Psalm
                 run: vendor/bin/psalm --taint-analysis
