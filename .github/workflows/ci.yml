@@ -41,7 +41,9 @@ jobs:
                 uses: ramsey/composer-install@v1
 
             -   name: Check Coding standards
-                run: vendor/bin/phpcs
+                run: |
+                    mkdir build
+                    vendor/bin/phpcs
 
             -   name: Run PHPStan
                 run: vendor/bin/phpstan analyse
