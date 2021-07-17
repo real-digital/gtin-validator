@@ -57,9 +57,7 @@ jobs:
                     vendor/bin/pcov clobber
 
             -   name: Check Coding standards
-                run: |
-                    mkdir build
-                    vendor/bin/phpcs
+                run: vendor/bin/phpcs
 
             -   name: Run PHPStan
                 run: vendor/bin/phpstan analyse --ansi
