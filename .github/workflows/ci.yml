@@ -1,0 +1,55 @@
+name: CI
+
+on:
+    pull_request:
+        paths-ignore:
+            - '**.md'
+    push:
+        paths-ignore:
+            - '**.md'
+
+jobs:
+    tests:
+        name: PHP ${{ matrix.php-versions }} tests on ${{ matrix.operating-system }}
+        runs-on: ${{ matrix.operating-system }}
+        strategy:
+            fail-fast: false
+            matrix:
+                operating-system:
+                    - macos-latest
+                    - ubuntu-16.04
+                    - ubuntu-18.04
+                    - ubuntu-20.04
+                    - windows-latest
+                php-versions:
+                    - 7.1
+                    - 7.2
+                    - 7.3
+                    - 7.4
+                    - 8.0
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v2
+
+            -   name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.php-versions }}
+                    coverage: pcov
+
+            -   name: Install composer dependencies
+                uses: ramsey/composer-install@v1
+
+            -   name: Check Coding standards
+                run: vendor/bin/phpcs
+
+            -   name: Run PHPStan
+                run: vendor/bin/phpstan analyse
+
+            -   name: Run Psalm
+                run: vendor/bin/psalm --taint-analysis
+
+            -   name: Run Tests
+                run: vendor/bin/phpunit
+
+
