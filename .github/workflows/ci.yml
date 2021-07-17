@@ -68,7 +68,7 @@ jobs:
                 run: vendor/bin/psalm --taint-analysis --output-format=github
 
             -   name: Run Tests
-                run: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+                run: vendor/bin/phpunit --coverage-text --coverage-clover build/logs/clover.xml
 
             -   name: Upload coverage results to Coveralls
                 env:
