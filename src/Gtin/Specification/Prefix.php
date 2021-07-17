@@ -15,7 +15,7 @@ final class Prefix implements Gtin\Specification
         // @formatter:off
         ['300', '379'], // GS1 France
         ['380', '380'], // GS1 Bulgaria
-        ['383', '383'], // GS1 Slovenija
+        ['383', '383'], // GS1 Slovenia
         ['385', '385'], // GS1 Croatia
         ['387', '387'], // GS1 Bosnia-Herzegovina
         ['389', '389'], // GS1 Montenegro
@@ -37,7 +37,7 @@ final class Prefix implements Gtin\Specification
         ['484', '484'], // GS1 Moldova
         ['485', '485'], // GS1 Armenia
         ['486', '486'], // GS1 Georgia
-        ['487', '487'], // GS1 Kazakstan
+        ['487', '487'], // GS1 Kazakhstan
         ['488', '488'], // GS1 Tajikistan
         ['489', '489'], // GS1 Hong Kong, China
         ['490', '499'], // GS1 Japan
@@ -88,11 +88,11 @@ final class Prefix implements Gtin\Specification
         ['743', '743'], // GS1 Nicaragua
         ['744', '744'], // GS1 Costa Rica
         ['745', '745'], // GS1 Panama
-        ['746', '746'], // GS1 Republica Dominicana
+        ['746', '746'], // GS1 Dominican Republic
         ['750', '750'], // GS1 Mexico
         ['754', '755'], // GS1 Canada
         ['759', '759'], // GS1 Venezuela
-        ['760', '769'], // GS1 Schweiz, Suisse, Svizzera
+        ['760', '769'], // GS1 Switzerland
         ['770', '771'], // GS1 Colombia
         ['773', '773'], // GS1 Uruguay
         ['775', '775'], // GS1 Peru
@@ -101,12 +101,12 @@ final class Prefix implements Gtin\Specification
         ['780', '780'], // GS1 Chile
         ['784', '784'], // GS1 Paraguay
         ['786', '786'], // GS1 Ecuador
-        ['789', '790'], // GS1 Brasil
+        ['789', '790'], // GS1 Brazil
         ['800', '839'], // GS1 Italy
         ['840', '849'], // GS1 Spain
         ['850', '850'], // GS1 Cuba
         ['858', '858'], // GS1 Slovakia
-        ['859', '859'], // GS1 Czech
+        ['859', '859'], // GS1 Czech Republic
         ['860', '860'], // GS1 Serbia
         ['865', '865'], // GS1 Mongolia
         ['867', '867'], // GS1 North Korea
