@@ -23,14 +23,12 @@ class PrefixTest extends TestCase
         self::assertSame(1005, $specification->reasonCode());
     }
 
-    public function prefixCounterProvider(): array
+    public function prefixCounterProvider(): iterable
     {
-        return [
-            [8, 113 + 6],
-            [12, 113 + 12],
-            [13, 113 + 12],
-            [14, 113 + 12],
-        ];
+        yield 'GTIN-8' => [8, 113 + 6];
+        yield 'GTIN-12' => [12, 113 + 12];
+        yield 'GTIN-13' => [13, 113 + 12];
+        yield 'GTIN-14' => [14, 113 + 12];
     }
 
     /**
@@ -48,24 +46,22 @@ class PrefixTest extends TestCase
         self::assertSame($count, count($prefixes));
     }
 
-    public function prefixProvider(): array
+    public function prefixProvider(): iterable
     {
-        return [
-            [8, '101', true],
-            [8, '099', true],
-            [12, '035', true],
-            [12, '025', true],
-            [13, '118', true],
-            [13, '140', false],
-            [14, '950', true],
-            [14, '956', false],
-        ];
+        yield '101' => ['101', 8, true];
+        yield '099' => ['099', 8, true];
+        yield '035' => ['035', 12, true];
+        yield '025' => ['025', 12, true];
+        yield '118' => ['118', 13, true];
+        yield '140' => ['140', 13, false];
+        yield '950' => ['950', 14, true];
+        yield '956' => ['956', 14, false];
     }
 
     /**
      * @dataProvider prefixProvider
      */
-    public function testIsSatisfied(int $length, string $prefix, bool $isSatisfied): void
+    public function testIsSatisfied(string $prefix, int $length, bool $isSatisfied): void
     {
         $specification = new Gtin\Specification\Prefix();
 

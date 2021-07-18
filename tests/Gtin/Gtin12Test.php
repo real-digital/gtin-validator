@@ -9,17 +9,15 @@ use Real\Validator\Gtin;
 
 class Gtin12Test extends TestCase implements GtinTest
 {
-    public function invalidProvider(): array
+    public function invalidProvider(): iterable
     {
-        return [
-            ['9638507', 1001],
-            ['614141999997', 1004],
-            ['61414I999996', 1003],
-            ['123456789012345', 1000],
-            ['96385074', 1002],
-            ['4006381333931', 1002],
-            ['10012345678902', 1002],
-        ];
+        yield '9638507' => ['9638507', 1001];
+        yield '614141999997' => ['614141999997', 1004];
+        yield '61414I999996' => ['61414I999996', 1003];
+        yield '123456789012345' => ['123456789012345', 1000];
+        yield '96385074' => ['96385074', 1002];
+        yield '4006381333931' => ['4006381333931', 1002];
+        yield '10012345678902' => ['10012345678902', 1002];
     }
 
     /**
@@ -33,15 +31,13 @@ class Gtin12Test extends TestCase implements GtinTest
         new Gtin\Gtin12($value);
     }
 
-    public function validProvider(): array
+    public function validProvider(): iterable
     {
-        return [
-            ['614141991'],
-            ['0614141991'],
-            ['00614141991'],
-            ['614141999996'],
-            ['942217200524'],
-        ];
+        yield '614141991' => ['614141991'];
+        yield '0614141991' => ['0614141991'];
+        yield '00614141991' => ['00614141991'];
+        yield '614141999996' => ['614141999996'];
+        yield '942217200524' => ['942217200524'];
     }
 
     /**
@@ -94,13 +90,11 @@ class Gtin12Test extends TestCase implements GtinTest
         self::assertSame($value, $gtin->origin());
     }
 
-    public function keyProvider(): array
+    public function keyProvider(): iterable
     {
-        return [
-            ['614141999996', '614141999996'],
-            ['0614141999996', '614141999996'],
-            ['00614141999996', '614141999996'],
-        ];
+        yield '614141999996' => ['614141999996', '614141999996'];
+        yield '0614141999996' => ['0614141999996', '614141999996'];
+        yield '00614141999996' => ['00614141999996', '614141999996'];
     }
 
     /**
@@ -114,12 +108,10 @@ class Gtin12Test extends TestCase implements GtinTest
         self::assertSame(12, strlen($gtin->key()));
     }
 
-    public function paddedProvider(): array
+    public function paddedProvider(): iterable
     {
-        return [
-            ['614141999996', '00614141999996'],
-            ['942217200524', '00942217200524'],
-        ];
+        yield '614141999996' => ['614141999996', '00614141999996'];
+        yield '942217200524' => ['942217200524', '00942217200524'];
     }
 
     /**
@@ -132,12 +124,10 @@ class Gtin12Test extends TestCase implements GtinTest
         self::assertSame($padded, $gtin->padded());
     }
 
-    public function checkDigitProvider(): array
+    public function checkDigitProvider(): iterable
     {
-        return [
-            ['614141999996', 6],
-            ['942217200524', 4],
-        ];
+        yield '614141999996' => ['614141999996', 6];
+        yield '942217200524' => ['942217200524', 4];
     }
 
     /**
@@ -150,12 +140,10 @@ class Gtin12Test extends TestCase implements GtinTest
         self::assertSame($checkDigit, $gtin->checkDigit());
     }
 
-    public function prefixProvider(): array
+    public function prefixProvider(): iterable
     {
-        return [
-            ['614141999996', '061'],
-            ['942217200524', '094'],
-        ];
+        yield '614141999996' => ['614141999996', '061'];
+        yield '942217200524' => ['942217200524', '094'];
     }
 
     /**
