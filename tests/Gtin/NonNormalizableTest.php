@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Real\Validator\Tests\Gtin;
@@ -8,13 +9,11 @@ use Real\Validator\Gtin;
 
 class NonNormalizableTest extends TestCase
 {
-    public function valueProvider(): array
+    public function valueProvider(): iterable
     {
-        return [
-            ['42'],
-            ["\n"],
-            [''],
-        ];
+        yield '42' => ['42'];
+        yield '\n' => ["\n"];
+        yield '' => [''];
     }
 
     /**

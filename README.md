@@ -1,7 +1,7 @@
 # Real GTIN Validator
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/real-digital/gtin-validator.svg)](https://packagist.org/packages/real-digital/gtin-validator)
-[![Build Status](https://travis-ci.org/real-digital/gtin-validator.svg?branch=master)](https://travis-ci.org/real-digital/gtin-validator)
+[![Build Status](https://github.com/real-digital/gtin-validator/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/real-digital/gtin-validator/actions)
 [![Coverage Status](https://coveralls.io/repos/github/real-digital/gtin-validator/badge.svg?branch=master)](https://coveralls.io/github/real-digital/gtin-validator?branch=master)
 
 A GTIN is a string of digits that uniquely identifies a trade item (a product that is bought and sold). 

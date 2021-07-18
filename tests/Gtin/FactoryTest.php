@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Real\Validator\Tests\Gtin;
@@ -8,28 +9,26 @@ use Real\Validator\Gtin;
 
 class FactoryTest extends TestCase
 {
-    public function validValueProvider(): array
+    public function validValueProvider(): iterable
     {
-        return [
-            ['96385074', Gtin\Gtin8::class],
-            ['73127727', Gtin\Gtin8::class],
-            ['073127727', Gtin\Gtin8::class],
-            ['0073127727', Gtin\Gtin8::class],
-            ['00073127727', Gtin\Gtin8::class],
-            ['000073127727', Gtin\Gtin8::class],
-            ['0000073127727', Gtin\Gtin8::class],
-            ['614141991', Gtin\Gtin12::class],
-            ['0614141991', Gtin\Gtin12::class],
-            ['00614141991', Gtin\Gtin12::class],
-            ['123601057072', Gtin\Gtin12::class],
-            ['725272730706', Gtin\Gtin12::class],
-            ['0725272730706', Gtin\Gtin12::class],
-            ['4006381333931', Gtin\Gtin13::class],
-            ['5010677012638', Gtin\Gtin13::class],
-            ['05010677012638', Gtin\Gtin13::class],
-            ['10012345678902', Gtin\Gtin14::class],
-            ['58937437933236', Gtin\Gtin14::class],
-        ];
+        yield '96385074' => ['96385074', Gtin\Gtin8::class];
+        yield '73127727' => ['73127727', Gtin\Gtin8::class];
+        yield '073127727' => ['073127727', Gtin\Gtin8::class];
+        yield '0073127727' => ['0073127727', Gtin\Gtin8::class];
+        yield '00073127727' => ['00073127727', Gtin\Gtin8::class];
+        yield '000073127727' => ['000073127727', Gtin\Gtin8::class];
+        yield '0000073127727' => ['0000073127727', Gtin\Gtin8::class];
+        yield '614141991' => ['614141991', Gtin\Gtin12::class];
+        yield '0614141991' => ['0614141991', Gtin\Gtin12::class];
+        yield '00614141991' => ['00614141991', Gtin\Gtin12::class];
+        yield '123601057072' => ['123601057072', Gtin\Gtin12::class];
+        yield '725272730706' => ['725272730706', Gtin\Gtin12::class];
+        yield '0725272730706' => ['0725272730706', Gtin\Gtin12::class];
+        yield '4006381333931' => ['4006381333931', Gtin\Gtin13::class];
+        yield '5010677012638' => ['5010677012638', Gtin\Gtin13::class];
+        yield '05010677012638' => ['05010677012638', Gtin\Gtin13::class];
+        yield '10012345678902' => ['10012345678902', Gtin\Gtin14::class];
+        yield '58937437933236' => ['58937437933236', Gtin\Gtin14::class];
     }
 
     /**
@@ -52,20 +51,18 @@ class FactoryTest extends TestCase
         self::assertTrue(Gtin\Factory::isValid($value));
     }
 
-    public function invalidValueProvider(): array
+    public function invalidValueProvider(): iterable
     {
-        return [
-            ['1', 1001],
-            ['12', 1001],
-            ['123', 1001],
-            ['1234', 1001],
-            ['12345', 1001],
-            ['123456', 1001],
-            ['1234567', 1001],
-            ['123456789012345', 1000],
-            ['1234567890123456', 1000],
-            ['12345678901234567', 1000],
-        ];
+        yield '1' => ['1', 1001];
+        yield '12' => ['12', 1001];
+        yield '123' => ['123', 1001];
+        yield '1234' => ['1234', 1001];
+        yield '12345' => ['12345', 1001];
+        yield '123456' => ['123456', 1001];
+        yield '1234567' => ['1234567', 1001];
+        yield '123456789012345' => ['123456789012345', 1000];
+        yield '1234567890123456' => ['1234567890123456', 1000];
+        yield '12345678901234567' => ['12345678901234567', 1000];
     }
 
     /**
