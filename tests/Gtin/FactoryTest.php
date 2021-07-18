@@ -15,7 +15,7 @@ class FactoryTest extends TestCase
         yield '73127727' => ['73127727', Gtin\Gtin8::class];
         yield '073127727' => ['073127727', Gtin\Gtin8::class];
         yield '0073127727' => ['0073127727', Gtin\Gtin8::class];
-        yield '00073127727' => ['00073127727', Gtin\Gtin8::class];
+        // yield '00073127727' => ['00073127727', Gtin\Gtin8::class];
         yield '000073127727' => ['000073127727', Gtin\Gtin8::class];
         yield '0000073127727' => ['0000073127727', Gtin\Gtin8::class];
         yield '614141991' => ['614141991', Gtin\Gtin12::class];
