@@ -26,10 +26,10 @@ class PrefixTest extends TestCase
     public function prefixCounterProvider(): array
     {
         return [
-            [8, 2 + 113],
-            [12, 5 + 113],
-            [13, 5 + 113],
-            [14, 5 + 113],
+            [8, 113 + 6],
+            [12, 113 + 12],
+            [13, 113 + 12],
+            [14, 113 + 12],
         ];
     }
 
@@ -52,9 +52,9 @@ class PrefixTest extends TestCase
     {
         return [
             [8, '101', true],
-            [8, '099', false],
+            [8, '099', true],
             [12, '035', true],
-            [12, '025', false],
+            [12, '025', true],
             [13, '118', true],
             [13, '140', false],
             [14, '950', true],

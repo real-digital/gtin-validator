@@ -7,11 +7,11 @@ namespace Real\Validator\Gtin\Specification;
 use Real\Validator\Gtin;
 
 /**
- * @link http://www.gs1.org/barcodes/support/prefix_list
+ * @link https://www.gs1.org/standards/id-keys/company-prefix
  */
 final class Prefix implements Gtin\Specification
 {
-    private const GS1_MEMBER_ORGANIZATION_PREFIXES = [
+    private const GS1_COUNTRY_PREFIXES = [
         // @formatter:off
         ['300', '379'], // GS1 France
         ['380', '380'], // GS1 Bulgaria
@@ -65,18 +65,19 @@ final class Prefix implements Gtin\Specification
         ['613', '613'], // GS1 Algeria
         ['615', '615'], // GS1 Nigeria
         ['616', '616'], // GS1 Kenya
+        ['617', '617'], // GS1 Cameroon
         ['618', '618'], // GS1 Ivory Coast
         ['619', '619'], // GS1 Tunisia
         ['620', '620'], // GS1 Tanzania
         ['621', '621'], // GS1 Syria
         ['622', '622'], // GS1 Egypt
-        ['623', '623'], // GS1 Brunei
         ['624', '624'], // GS1 Libya
         ['625', '625'], // GS1 Jordan
         ['626', '626'], // GS1 Iran
         ['627', '627'], // GS1 Kuwait
         ['628', '628'], // GS1 Saudi Arabia
         ['629', '629'], // GS1 Emirates
+        ['630', '630'], // GS1 Qatar
         ['640', '649'], // GS1 Finland
         ['690', '699'], // GS1 China
         ['700', '709'], // GS1 Norway
@@ -123,7 +124,6 @@ final class Prefix implements Gtin\Specification
         ['900', '919'], // GS1 Austria
         ['930', '939'], // GS1 Australia
         ['940', '949'], // GS1 New Zealand
-        ['950', '951'], // GS1 Global Office
         ['955', '955'], // GS1 Malaysia
         ['958', '958'], // GS1 Macau, China
         // @formatter:on
@@ -132,35 +132,28 @@ final class Prefix implements Gtin\Specification
     private const GS1_PREFIXES = [
         // @formatter:off
         ['000', '019'], // GS1 US
-//      ['020', '029'], // Restricted distribution
+        ['020', '029'], // Used to issue Restricted Circulation Numbers within a geographic region (MO defined)
         ['030', '039'], // GS1 US
-//      ['040', '049'], // Restricted distribution
-//      ['050', '059'], // Coupons
+        ['040', '049'], // Used to issue GS1 Restricted Circulation Numbers within a company
         ['060', '139'], // GS1 US
-//      ['140', '199'], // Reserved for future use
-//      ['200', '299'], // Restricted distribution
-//      ['952', '954'], // Reserved for future use
-//      ['956', '957'], // Reserved for future use
-//      ['959', '959'], // Reserved for future use
-//      ['960', '969'], // Never used for GTIN-12, -13, or -14, but are used for GTIN-8s
-//      ['970', '976'], // Reserved for future use
-        ['977', '977'], // Valid prefix for ISSN
-        ['978', '979'], // Valid prefix for ISBN
-//      ['980', '999'], // Coupons and other special uses
+        ['200', '299'], // Used to issue GS1 Restricted Circulation Numbers within a geographic region (MO defined)
+        ['950', '950'], // GS1 Global Office
+        ['951', '951'], // Used to issue General Manager Numbers for the EPC General Identifier (GID)
+        ['977', '977'], // Serial publications (ISSN)
+        ['978', '979'], // "Bookland" (ISBN)
+        ['980', '980'], // Refund receipts
+        ['981', '984'], // GS1 coupon identification for common currency areas
         // @formatter:on
     ];
 
     private const GS1_8_PREFIXES = [
         // @formatter:off
-//      ['000', '099'], // Restricted distribution
+        ['000', '099'], // Used to issue Restricted Circulation Numbers within a company
         ['100', '139'], // GS1 US
-//      ['140', '199'], // Reserved for future use
-//      ['200', '299'], // Restricted distribution
-//      ['952', '954'], // Reserved for future use
-//      ['956', '957'], // Reserved for future use
-//      ['959', '959'], // Reserved for future use
+        ['200', '299'], // Used to issue GS1 Restricted Circulation Numbers within a geographic region (MO defined)
+        ['950', '950'], // GS1 Global Office
+        ['951', '951'], // Used to issue General Manager Numbers for the EPC General Identifier (GID)
         ['960', '969'], // Never used for GTIN-12, -13, or -14, but are used for GTIN-8s
-//      ['970', '999'], // Reserved for future use
         // @formatter:on
     ];
 
@@ -196,6 +189,6 @@ final class Prefix implements Gtin\Specification
             $list = self::GS1_8_PREFIXES;
         }
 
-        return array_merge($list, self::GS1_MEMBER_ORGANIZATION_PREFIXES);
+        return array_merge($list, self::GS1_COUNTRY_PREFIXES);
     }
 }
