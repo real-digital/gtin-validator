@@ -69,9 +69,10 @@ jobs:
                 run: vendor/bin/phpunit --coverage-text --coverage-clover build/logs/clover.xml
 
             -   name: Upload coverage results to Coveralls
+                if: ! matrix.experimental
                 env:
                     COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                 run: |
-                    composer require php-coveralls/php-coveralls --dev --no-interaction ${{ matrix.composer-options }}
+                    composer require php-coveralls/php-coveralls --dev --no-interaction
                     vendor/bin/php-coveralls --coverage_clover=build/logs/clover.xml --verbose
 
