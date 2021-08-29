@@ -73,6 +73,6 @@ jobs:
                 env:
                     COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                 run: |
-                    composer require php-coveralls/php-coveralls --dev --no-interaction
+                    composer require php-coveralls/php-coveralls --dev --no-interaction ${{ matrix.composer-options }}
                     vendor/bin/php-coveralls --coverage_clover=build/logs/clover.xml --verbose
 
