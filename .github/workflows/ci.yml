@@ -28,9 +28,10 @@ jobs:
                     - 7.3
                     - 7.4
                     - 8.0
+                    - 8.1
                 experimental: [ false ]
                 include:
-                    -   php: 8.1
+                    -   php: 8.2
                         os: ubuntu-latest
                         experimental: true
                         composer-options: '--ignore-platform-reqs'
