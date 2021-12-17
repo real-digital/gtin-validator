@@ -27,6 +27,6 @@ final class Gtin14 extends General
      */
     public function prefix(): string
     {
-        return substr($this->padded(), 1, 3);
+        return (string) substr($this->padded(), 1, 3);
     }
 }

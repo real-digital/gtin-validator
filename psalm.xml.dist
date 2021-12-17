@@ -2,9 +2,7 @@
 <psalm
     addParamDefaultToDocblockType="true"
     allowNamedArgumentCalls="false"
-    allowPhpStormGenerics="true"
     cacheDirectory="build/psalm.cache"
-    checkForThrowsDocblock="true"
     checkForThrowsInGlobalScope="true"
     ensureArrayIntOffsetsExist="true"
     ensureArrayStringOffsetsExist="true"
@@ -15,7 +13,7 @@
     forbidEcho="true"
     ignoreInternalFunctionFalseReturn="false"
     ignoreInternalFunctionNullReturn="false"
-    runTaintAnalysis="true"
+    reportMixedIssues="false"
     strictBinaryOperands="true"
     throwExceptionOnError="true"
     useDocblockPropertyTypes="true"
@@ -25,11 +23,14 @@
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
 >
+    <plugins>
+        <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
+    </plugins>
     <projectFiles>
         <directory name="src"/>
-        <directory name="tests"/>
+        <directory name="tests/"/>
         <ignoreFiles>
-            <directory name="vendor"/>
+            <directory name="vendor/"/>
         </ignoreFiles>
     </projectFiles>
 </psalm>
